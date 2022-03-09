@@ -1,70 +1,102 @@
-# Getting Started with Create React App
+# Frontend Mentor - Loopstudios landing page solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Loopstudios landing page challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/loopstudios-landing-page-N88J5Onjw). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Frontend Mentor - Loopstudios landing page solution](#frontend-mentor---loopstudios-landing-page-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
+    - [What I learned](#what-i-learned)
+  - [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### The challenge
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Users should be able to:
 
-### `npm test`
+- View the optimal layout for the site depending on their device's screen size
+- See hover states for all interactive elements on the page
+- **bonus**: see animation for the menu in mobile view
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshot
 
-### `npm run build`
+![](/src/img/loopstudio.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [Code Source](https://your-solution-url.com)
+- [Live Demo](https://your-live-site-url.com)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## My process
 
-### `npm run eject`
+### Built with
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- [React](https://reactjs.org/) - JS library
+- [Styled Components](https://styled-components.com/) - For styles
+- [Vite](https://vitejs.dev/) - Frontend tool
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+This is second version of this project, I build the first one using Vite but was a problem with images in production so rebuild it with create-react-app.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This how I fix the problem using `require`
 
-## Learn More
+```javascript
+const product = [
+  { img: 'image-deep-earth', text: 'deep earth' },
+  { img: 'image-night-arcade', text: 'night arcade' },
+  { img: 'image-soccer-team', text: 'soccer team vr' },
+  { img: 'image-grid', text: 'the grid' },
+  { img: 'image-from-above', text: 'from up above vr' },
+  { img: 'image-pocket-borealis', text: 'pocket borealis' },
+  { img: 'image-curiosity', text: 'the curiosity' },
+  { img: 'image-fisheye', text: 'make it fisheye' }
+]
+  .map((bg, idx) => {
+    return `li:nth-child(${idx + 1}){
+        background-image: linear-gradient(50deg, rgb(0,0,0,0.8),transparent), 
+        url("${require('../../img/mobile/' + bg.img + '.jpg')}");
+        background-size:cover;
+        min-height:110px;
+        position:relative;
+        @media ${device.md}{
+          background-image: linear-gradient(50deg, rgb(0,0,0,0.8),transparent), 
+          url("${require('../../img/desktop/' + bg.img + '.jpg')}");
+          min-height:380px;
+        }
+    }
+    
+    li:nth-child(${idx + 1}):before{
+        content: "${bg.text}";
+        color: var(--White);
+        width:40%;
+        position:absolute;
+        bottom:20%;
+        left:10%;
+        text-transform:uppercase;
+        font-size:1.3rem;
+        font-family: 'Josefin Sans', sans-serif;
+        line-height:1.3;
+        font-weight:300;
+        @media ${device.md}{
+          bottom:10%;
+          // left:20%
+          width:50%
+        }
+    }`;
+  })
+  .join('');
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Author
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Frontend Mentor - [@zougari47](https://www.frontendmentor.io/profile/zougari47)
+- Twitter - [@zougari47](https://www.twitter.com/zougari47)
+- codepen - [@zougari47](https://codepen.io/zougari47)
