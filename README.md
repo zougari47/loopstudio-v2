@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- [Code Source](https://your-solution-url.com)
-- [Live Demo](https://your-live-site-url.com)
+- [Code Source](https://github.com/zougari47/loopstudio-v2)
+- [Live Demo](https://loop-studio-page.netlify.app)
 
 ## My process
 
@@ -40,7 +40,6 @@ Users should be able to:
 
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
-- [Vite](https://vitejs.dev/) - Frontend tool
 
 ### What I learned
 
